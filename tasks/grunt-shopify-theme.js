@@ -22,7 +22,7 @@ module.exports = function (grunt) {
       
       destname = path.join(root, fileStats.name);
       if ( !haves[destname]  ) {
-        fs.unlinkSync(destname); 
+        fs.unlinkSync(destname);
         grunt.log.writeln('Deleted: ' + destname);
       }
 
@@ -41,12 +41,12 @@ module.exports = function (grunt) {
       , defaultExtensions
       , assetsExtensions
       , additionalExtensions = []
-      , configs 
+      , configs
       , checks = {}
       , destdir = me.data.destination || 'deploy'
       , copyTaskConfig
       , pruneTaskConfig
-      , haves = {}
+      , haves = me.data.haves || {}
       ;
 
     if ( !me.data.assets ) {
@@ -139,7 +139,7 @@ module.exports = function (grunt) {
       // If not a file, bail immediately
       if (!stat.isFile()) {
         return false;
-      } 
+      }
 
       filename = path.basename(pathname);
 
